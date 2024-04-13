@@ -71,6 +71,7 @@ describe('map-examples-to-routes', () => {
       expect(isGroupRoute(route)).true
       expect(isExampleRoute(route)).false
     })
+
     it('should detect type ExampleRoute', () => {
       const route: Route = { path: '', importPath: '' }
 
