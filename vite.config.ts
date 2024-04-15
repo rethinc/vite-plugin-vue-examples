@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import vueExamples from './src/vite-plugin-vue-examples'
 
 export default defineConfig({
-  plugins: [vue(), vueExamples()],
+  plugins: [vue(), vueExamples({ examplesRootPath: './example' })],
   build: {
     lib: {
       entry: 'src/vite-plugin-vue-examples.ts',
@@ -12,7 +12,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['vite'],
+      external: ['vite', 'path', 'fs/promises'],
     },
   },
 })
