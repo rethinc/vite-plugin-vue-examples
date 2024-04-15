@@ -48,6 +48,22 @@ export default (
         }
         next()
       })
+      server.watcher.add(configuration.examplesRootPath)
+      server.watcher.on('all', async (event, changedFilePath) => {
+        if (
+          ['add', 'unlink'].includes(event) &&
+          changedFilePath.startsWith(configuration.examplesRootPath) &&
+          changedFilePath.endsWith(configuration.exampleFileNameSuffix)
+        ) {
+          const module = server.moduleGraph.getModuleById(
+            resolvedRouteRecordsId
+          )
+          if (module) {
+            server.moduleGraph.invalidateModule(module)
+            server.hot.send({ type: 'full-reload' })
+          }
+        }
+      })
     },
 
     async resolveId(id) {
