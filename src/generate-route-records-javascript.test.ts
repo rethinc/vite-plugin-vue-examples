@@ -26,7 +26,7 @@ describe('generateRouteRecordsJavascript', () => {
 
     const javascript = generateRouteRecordsJavascript([exampleRoute])
 
-    const expectedRecord = `{path: 'path', component: Name}`
+    const expectedRecord = `{path: 'path', component: Name},`
     expect(javascript).toContain(expectedRecord)
   })
 
@@ -43,7 +43,7 @@ describe('generateRouteRecordsJavascript', () => {
 
     const javascript = generateRouteRecordsJavascript([groupRoute])
 
-    const expectedRecord = `{path: 'group-path', children: [{path: 'example-path', component: Name},]`
+    const expectedRecord = `{path: 'group-path', children: [{path: 'example-path', component: Name},]},`
     expect(javascript).toContain(expectedRecord)
   })
 })
