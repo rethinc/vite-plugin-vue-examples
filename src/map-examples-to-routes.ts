@@ -9,6 +9,7 @@ export interface GroupRoute {
 }
 
 export interface ExampleRoute {
+  name: string
   path: string
   importPath: string
 }
@@ -33,8 +34,10 @@ const routeExample = (
   fileName: string,
   examplesFileSuffix: string
 ): ExampleRoute => {
-  const path = fileName.replace(examplesFileSuffix, '').toLowerCase()
+  const name = fileName.replace(examplesFileSuffix, '')
+  const path = name.toLowerCase()
   return {
+    name,
     path,
     importPath: filePath,
   }

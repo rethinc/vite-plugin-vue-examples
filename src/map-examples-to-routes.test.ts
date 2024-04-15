@@ -31,8 +31,9 @@ describe('mapExamplesToRoutes', () => {
 
     const exampleRoute = routes[0] as ExampleRoute
     expect(exampleRoute).toStrictEqual({
-      importPath: path.resolve(rootFolder, exampleFile),
+      name: 'Dummy',
       path: 'dummy',
+      importPath: path.resolve(rootFolder, exampleFile),
     })
   })
 
@@ -73,7 +74,7 @@ describe('mapExamplesToRoutes', () => {
     })
 
     it('should detect type ExampleRoute', () => {
-      const route: Route = { path: '', importPath: '' }
+      const route: Route = { name: '', path: '', importPath: '' }
 
       expect(isExampleRoute(route)).true
       expect(isGroupRoute(route)).false
