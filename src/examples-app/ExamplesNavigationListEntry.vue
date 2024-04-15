@@ -14,9 +14,7 @@ const props = withDefaults(
 const isExample = computed(() => {
   return !!props.routeRecord.component
 })
-const hasChildren = computed(() => {
-  return !!props.routeRecord.children && props.routeRecord.children.length > 0
-})
+
 const completeRoutePath = computed(() => {
   return `${props.currentPath}/${props.routeRecord.path}`
 })
@@ -27,10 +25,11 @@ const completeRoutePath = computed(() => {
     <template v-if="isExample">
       <RouterLink :to="completeRoutePath">{{ routeRecord.path }}</RouterLink>
     </template>
-    <template v-if="hasChildren">
+    <template v-else>
       {{ routeRecord.path }}
     </template>
     <ExamplesNavigationList
+      v-if="routeRecord.children"
       :route-records="routeRecord.children"
       :current-path="completeRoutePath"
     />
