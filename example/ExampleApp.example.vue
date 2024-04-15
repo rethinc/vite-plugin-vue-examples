@@ -1,1 +1,3 @@
-<template>My first Example File</template>
+<template>
+  <h1>My first Example</h1>
+</template>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { routeRecords } from 'virtual:vue-examples-route-records'
+import ExamplesNavigationList from './ExamplesNavigationList.vue'
 
 const showOverlay = ref(false)
 
@@ -19,6 +21,7 @@ const onClickClose = () => {
       <div class="header">
         <button class="button" @click="onClickClose">Close</button>
       </div>
+      <ExamplesNavigationList :route-records="routeRecords" />
     </div>
   </div>
 </template>
