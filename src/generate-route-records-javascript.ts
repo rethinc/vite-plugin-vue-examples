@@ -1,17 +1,32 @@
-import { isExampleRoute, Route } from './map-examples-to-routes'
+import { isExampleRoute, isGroupRoute, Route } from './map-examples-to-routes'
 
-export const generateRouteRecordsJavascript = (routes: Route[]) => {
-  let records = ''
-  let imports = ''
+interface JavascriptData {
+  imports: string
+  records: string
+}
+
+const collectRouteRecordsForRoutes = (
+  routes: Route[],
+  javascriptData: JavascriptData
+) => {
   for (const route of routes) {
     if (isExampleRoute(route)) {
-      imports += `import ${route.name} from '${route.importPath}'\n`
-      records += `{path: '${route.path}', component: ${route.name}}`
+      javascriptData.imports += `import ${route.name} from '${route.importPath}'\n`
+      javascriptData.records += `{path: '${route.path}', component: ${route.name}}`
+    }
+    if (isGroupRoute(route)) {
+      javascriptData.records += `{path: '${route.path}', children: [`
+      collectRouteRecordsForRoutes(route.routes, javascriptData)
+      javascriptData.records += ',]}'
     }
   }
+}
 
+export const generateRouteRecordsJavascript = (routes: Route[]) => {
+  const javascriptData: JavascriptData = { imports: '', records: '' }
+  collectRouteRecordsForRoutes(routes, javascriptData)
   return `
-${imports}  
-export const routeRecords = [${records}]
+${javascriptData.imports}  
+export const routeRecords = [${javascriptData.records}]
 `
 }
