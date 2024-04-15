@@ -12,7 +12,7 @@ import {
   isExampleRoute,
 } from './map-examples-to-routes'
 
-describe('map-examples-to-routes', () => {
+describe('mapExamplesToRoutes', () => {
   const rootFolder = path.resolve(os.tmpdir(), 'vue-examples-tests/')
   const vueExamplesSuffix = '.example.vue'
 
