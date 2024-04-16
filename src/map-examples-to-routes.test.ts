@@ -32,7 +32,6 @@ describe('mapExamplesToRoutes', () => {
     const exampleRoute = routes[0] as ExampleRoute
     expect(exampleRoute).toStrictEqual({
       name: 'Dummy',
-      path: 'dummy',
       importPath: path.resolve(rootFolder, exampleFile),
     })
   })

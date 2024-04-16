@@ -6,7 +6,6 @@ describe('generateRouteRecordsJavascript', () => {
   it('should add import statement for ExampleRoute', () => {
     const exampleRoute: ExampleRoute = {
       name: 'Dummy',
-      path: 'path',
       importPath: './import-path/Dummy.example.vue',
     }
 
@@ -20,7 +19,6 @@ describe('generateRouteRecordsJavascript', () => {
   it('should add route record for ExampleRoute', () => {
     const exampleRoute: ExampleRoute = {
       name: 'ExampleName',
-      path: 'path',
       importPath: 'import-path/Dummy.example.vue',
     }
 
@@ -33,7 +31,6 @@ describe('generateRouteRecordsJavascript', () => {
   it('should add route record for ExampleGroupRoute', () => {
     const exampleRoute: ExampleRoute = {
       name: 'ExampleName',
-      path: 'example-path',
       importPath: 'import-path/Dummy.example.vue',
     }
     const groupRoute: GroupRoute = {
