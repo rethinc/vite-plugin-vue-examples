@@ -5,34 +5,34 @@ import { generateRouteRecordsJavascript } from './generate-route-records-javascr
 describe('generateRouteRecordsJavascript', () => {
   it('should add import statement for ExampleRoute', () => {
     const exampleRoute: ExampleRoute = {
-      name: 'Name',
+      name: 'Dummy',
       path: 'path',
       importPath: './import-path/Dummy.example.vue',
     }
 
     const javascript = generateRouteRecordsJavascript([exampleRoute])
 
-    const expectedImport = `import Name from './import-path/Dummy.example.vue'`
+    const expectedImport = `import Dummy from './import-path/Dummy.example.vue'`
 
     expect(javascript).toContain(expectedImport)
   })
 
   it('should add route record for ExampleRoute', () => {
     const exampleRoute: ExampleRoute = {
-      name: 'Name',
+      name: 'ExampleName',
       path: 'path',
       importPath: 'import-path/Dummy.example.vue',
     }
 
     const javascript = generateRouteRecordsJavascript([exampleRoute])
 
-    const expectedRecord = `{path: 'path', component: Name},`
+    const expectedRecord = `{path: 'ExampleName', component: ExampleName},`
     expect(javascript).toContain(expectedRecord)
   })
 
   it('should add route record for ExampleGroupRoute', () => {
     const exampleRoute: ExampleRoute = {
-      name: 'Name',
+      name: 'ExampleName',
       path: 'example-path',
       importPath: 'import-path/Dummy.example.vue',
     }
@@ -43,7 +43,7 @@ describe('generateRouteRecordsJavascript', () => {
 
     const javascript = generateRouteRecordsJavascript([groupRoute])
 
-    const expectedRecord = `{path: 'group-path', children: [{path: 'example-path', component: Name},]},`
+    const expectedRecord = `{path: 'group-path', children: [{path: 'ExampleName', component: ExampleName},]},`
     expect(javascript).toContain(expectedRecord)
   })
 })

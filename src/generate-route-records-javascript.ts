@@ -12,7 +12,7 @@ const collectRouteRecordsForRoutes = (
   for (const route of routes) {
     if (isExampleRoute(route)) {
       javascriptData.imports += `import ${route.name} from '${route.importPath}'\n`
-      javascriptData.records += `{path: '${route.path}', component: ${route.name}},`
+      javascriptData.records += `{path: '${route.name}', component: ${route.name}},`
     }
     if (isGroupRoute(route)) {
       javascriptData.records += `{path: '${route.path}', children: [`
