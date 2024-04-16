@@ -15,7 +15,7 @@ export default (
 ): PluginOption => {
   const {
     exampleFileNameSuffix = '.example.vue',
-    examplesRootPath = './src',
+    examplesRootPath = '',
     examplesAppPath = 'vue-examples',
   } = customConfiguration
   const configuration: VueExamplesPluginConfiguration = {
