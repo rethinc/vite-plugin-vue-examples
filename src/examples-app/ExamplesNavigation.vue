@@ -55,7 +55,7 @@ const onClickClose = () => {
     display: flex;
     flex-direction: column;
     color: inherit;
-    background-color: transparentize($color-background-primary, 0.05);
+    background-color: transparentize($color-background-primary, 0.02);
     position: fixed;
     top: 0;
     left: 0;

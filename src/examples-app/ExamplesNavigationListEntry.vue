@@ -23,7 +23,9 @@ const completeRoutePath = computed(() => {
 <template>
   <li class="examples-navigation-list-entry">
     <template v-if="isExample">
-      <RouterLink :to="completeRoutePath">{{ routeRecord.path }}</RouterLink>
+      <RouterLink class="link" :to="completeRoutePath">{{
+        routeRecord.path
+      }}</RouterLink>
     </template>
     <template v-else>
       {{ routeRecord.path }}
@@ -36,4 +38,20 @@ const completeRoutePath = computed(() => {
   </li>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import 'styles/variables.scss';
+
+.examples-navigation-list-entry {
+  color: $color-font-secondary;
+  padding-top: 6px;
+
+  .link {
+    text-decoration: none;
+    color: $color-font-primary;
+
+    &:hover {
+      color: $color-font-highlight;
+    }
+  }
+}
+</style>
