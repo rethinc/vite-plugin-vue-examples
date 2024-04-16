@@ -4,7 +4,7 @@ import * as fsp from 'fs/promises'
 export type Route = GroupRoute | ExampleRoute
 
 export interface GroupRoute {
-  path: string
+  name: string
   routes: Route[]
 }
 
@@ -53,7 +53,7 @@ const routeGroup = async (
     return null
   }
   return {
-    path: folderName,
+    name: folderName,
     routes: subRoutes,
   }
 }

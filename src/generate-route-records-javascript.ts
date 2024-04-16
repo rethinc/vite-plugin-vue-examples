@@ -15,7 +15,7 @@ const collectRouteRecordsForRoutes = (
       javascriptData.records += `{path: '${route.name}', component: ${route.name}},`
     }
     if (isGroupRoute(route)) {
-      javascriptData.records += `{path: '${route.path}', children: [`
+      javascriptData.records += `{path: '${route.name}', children: [`
       collectRouteRecordsForRoutes(route.routes, javascriptData)
       javascriptData.records += ']},'
     }

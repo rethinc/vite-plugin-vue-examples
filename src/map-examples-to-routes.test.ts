@@ -37,7 +37,7 @@ describe('mapExamplesToRoutes', () => {
   })
 
   it('should map folders with examples to group route', async () => {
-    const exampleFolder = 'nested/'
+    const exampleFolder = 'folder/'
     const exampleFile = 'Dummy.example.vue'
     await fsp.mkdir(path.resolve(rootFolder, exampleFolder), {
       recursive: true,
@@ -50,12 +50,12 @@ describe('mapExamplesToRoutes', () => {
     const routes = await mapExamplesToRoutes(rootFolder, vueExamplesSuffix)
 
     const groupRoute = routes[0] as GroupRoute
-    expect(groupRoute.path).toBe('nested')
+    expect(groupRoute.name).toBe('folder')
     expect(groupRoute.routes.length).toBe(1)
   })
 
   it('should not map folders without examples', async () => {
-    const exampleFolder = 'nested/'
+    const exampleFolder = 'folder/'
     await fsp.mkdir(path.resolve(rootFolder, exampleFolder), {
       recursive: true,
     })
@@ -66,14 +66,14 @@ describe('mapExamplesToRoutes', () => {
   })
   describe('isGroupRoute and isExampleRoute', () => {
     it('should detect type GroupRoute', () => {
-      const route: Route = { path: '', routes: [] }
+      const route: Route = { name: '', routes: [] }
 
       expect(isGroupRoute(route)).true
       expect(isExampleRoute(route)).false
     })
 
     it('should detect type ExampleRoute', () => {
-      const route: Route = { name: '', path: '', importPath: '' }
+      const route: Route = { name: '', importPath: '' }
 
       expect(isExampleRoute(route)).true
       expect(isGroupRoute(route)).false

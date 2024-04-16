@@ -34,13 +34,13 @@ describe('generateRouteRecordsJavascript', () => {
       importPath: 'import-path/Dummy.example.vue',
     }
     const groupRoute: GroupRoute = {
-      path: 'group-path',
+      name: 'GroupName',
       routes: [exampleRoute],
     }
 
     const javascript = generateRouteRecordsJavascript([groupRoute])
 
-    const expectedRecord = `{path: 'group-path', children: [{path: 'ExampleName', component: ExampleName},]},`
+    const expectedRecord = `{path: 'GroupName', children: [{path: 'ExampleName', component: ExampleName},]},`
     expect(javascript).toContain(expectedRecord)
   })
 })
