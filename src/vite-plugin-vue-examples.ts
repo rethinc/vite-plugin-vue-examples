@@ -1,5 +1,6 @@
 import * as path from 'path'
 import * as fsp from 'fs/promises'
+import * as url from 'url'
 import { PluginOption, send } from 'vite'
 import { addStylesheetsToMainFile } from './add-stylesheets-to-main-file'
 import { mapExamplesToRoutes } from './map-examples-to-routes'
@@ -30,7 +31,8 @@ export default (
 
   const routeRecordsId = 'virtual:vue-examples-route-records'
   const resolvedRouteRecordsId = '\0' + routeRecordsId
-  const examplesAppFolder = path.resolve(__dirname, 'examples-app/')
+  const scriptFolder = path.dirname(url.fileURLToPath(import.meta.url))
+  const examplesAppFolder = path.resolve(scriptFolder, 'examples-app/')
 
   return {
     name: 'vue-examples',
