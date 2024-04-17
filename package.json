@@ -36,5 +36,14 @@
     "vitest": "^1.4.0",
     "vue-eslint-parser": "^9.4.2",
     "vue-tsc": "^2.0.7"
+  },
+  "files": [
+    "dist"
+  ],
+  "types": "./dist/vite-plugin-vue-examples.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/vite-plugin-vue-examples.js"
+    }
   }
 }
