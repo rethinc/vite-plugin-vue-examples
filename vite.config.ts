@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
+import copy from 'rollup-plugin-copy'
 import vueExamples from './src/vite-plugin-vue-examples'
 
 export default defineConfig({
@@ -8,6 +9,16 @@ export default defineConfig({
     vue(),
     vueExamples({ globalStylesheetPaths: ['/example/global.scss'] }),
     dts({ include: ['src/vite-plugin-vue-examples.ts'] }),
+    copy({
+      verbose: true,
+      hook: 'writeBundle',
+      targets: [
+        {
+          src: 'src/examples-app',
+          dest: 'dist/',
+        },
+      ],
+    }),
   ],
   build: {
     lib: {
