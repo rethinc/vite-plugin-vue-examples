@@ -6,7 +6,7 @@ import vueExamples from './src/vite-plugin-vue-examples'
 export default defineConfig({
   plugins: [
     vue(),
-    vueExamples({ globalStylesheets: ['/example/global.scss'] }),
+    vueExamples({ globalStylesheetPaths: ['/example/global.scss'] }),
     dts({ include: ['src/vite-plugin-vue-examples.ts'] }),
   ],
   build: {

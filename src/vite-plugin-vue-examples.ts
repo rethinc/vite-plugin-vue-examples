@@ -9,7 +9,7 @@ export interface VueExamplesPluginConfiguration {
   examplesRootPath: string
   exampleFileNameSuffix: string
   examplesAppPath: string
-  globalStylesheets?: string[]
+  globalStylesheetPaths?: string[]
 }
 
 export default (
@@ -19,13 +19,13 @@ export default (
     exampleFileNameSuffix = '.example.vue',
     examplesRootPath = '',
     examplesAppPath = 'vue-examples',
-    globalStylesheets = undefined,
+    globalStylesheetPaths = undefined,
   } = customConfiguration
   const configuration: VueExamplesPluginConfiguration = {
     examplesRootPath,
     exampleFileNameSuffix,
     examplesAppPath: path.resolve('/', examplesAppPath) + '/',
-    globalStylesheets,
+    globalStylesheetPaths,
   }
 
   const routeRecordsId = 'virtual:vue-examples-route-records'
@@ -91,12 +91,15 @@ export default (
       }
     },
     transform(src, id) {
-      if (!configuration.globalStylesheets) {
+      if (!configuration.globalStylesheetPaths) {
         return
       }
       if (id == `${examplesAppFolder}/main.ts`) {
         return {
-          code: addStylesheetsToMainFile(src, configuration.globalStylesheets),
+          code: addStylesheetsToMainFile(
+            src,
+            configuration.globalStylesheetPaths
+          ),
         }
       }
     },
