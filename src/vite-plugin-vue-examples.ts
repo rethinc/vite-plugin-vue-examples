@@ -91,7 +91,6 @@ export default (
       }
     },
     transform(src, id) {
-      console.log(configuration.globalStylesheets)
       if (!configuration.globalStylesheets) {
         return
       }
