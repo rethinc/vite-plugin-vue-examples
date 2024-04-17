@@ -29,6 +29,11 @@ const onClickClose = () => {
 <style scoped lang="scss">
 @import './styles/variables.scss';
 
+* {
+  all: revert;
+  font-family: sans-serif;
+}
+
 .examples-navigation {
   position: absolute;
 
