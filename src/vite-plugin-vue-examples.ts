@@ -1,6 +1,7 @@
 import * as path from 'path'
 import * as fsp from 'fs/promises'
 import { PluginOption, send } from 'vite'
+import { addStylesheetsToMainFile } from './add-stylesheets-to-main-file'
 import { mapExamplesToRoutes } from './map-examples-to-routes'
 import { generateRouteRecordsJavascript } from './generate-route-records-javascript'
 
@@ -8,6 +9,7 @@ export interface VueExamplesPluginConfiguration {
   examplesRootPath: string
   exampleFileNameSuffix: string
   examplesAppPath: string
+  globalStylesheets?: string[]
 }
 
 export default (
@@ -17,11 +19,13 @@ export default (
     exampleFileNameSuffix = '.example.vue',
     examplesRootPath = '',
     examplesAppPath = 'vue-examples',
+    globalStylesheets = undefined,
   } = customConfiguration
   const configuration: VueExamplesPluginConfiguration = {
     examplesRootPath,
     exampleFileNameSuffix,
     examplesAppPath: path.resolve('/', examplesAppPath) + '/',
+    globalStylesheets,
   }
 
   const routeRecordsId = 'virtual:vue-examples-route-records'
@@ -84,6 +88,17 @@ export default (
           configuration.exampleFileNameSuffix
         )
         return generateRouteRecordsJavascript(routes)
+      }
+    },
+    transform(src, id) {
+      console.log(configuration.globalStylesheets)
+      if (!configuration.globalStylesheets) {
+        return
+      }
+      if (id == `${examplesAppFolder}/main.ts`) {
+        return {
+          code: addStylesheetsToMainFile(src, configuration.globalStylesheets),
+        }
       }
     },
   }
