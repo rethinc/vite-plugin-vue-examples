@@ -1,5 +1,8 @@
 {
   "name": "vite-plugin-vue-examples",
+  "description": "Vite plugin to test vue files isolated",
+  "author": "re:thinc",
+  "license": "GPL-3.0",
   "private": false,
   "version": "0.0.1",
   "type": "module",
