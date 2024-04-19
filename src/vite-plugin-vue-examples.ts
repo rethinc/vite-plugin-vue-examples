@@ -2,7 +2,7 @@ import * as path from 'path'
 import * as fsp from 'fs/promises'
 import * as url from 'url'
 import { PluginOption, send } from 'vite'
-import { addStylesheetsToMainFile } from './add-stylesheets-to-main-file'
+import { examplesAppMainFileTransformer } from './examples-app-main-file-transformer'
 import { mapExamplesToRoutes } from './map-examples-to-routes'
 import { generateRouteRecordsJavascript } from './generate-route-records-javascript'
 
@@ -34,6 +34,7 @@ export default (
   const scriptFolder = path.dirname(url.fileURLToPath(import.meta.url))
   const examplesAppFolder = path.resolve(scriptFolder, 'examples-app/')
 
+  const mainFileTransformer = examplesAppMainFileTransformer(examplesAppFolder)
   return {
     name: 'vue-examples',
     configResolved(viteConfig) {
@@ -96,13 +97,11 @@ export default (
       if (!configuration.globalStylesheetPaths) {
         return
       }
-      if (id == `${examplesAppFolder}/main.ts`) {
-        return {
-          code: addStylesheetsToMainFile(
-            src,
-            configuration.globalStylesheetPaths
-          ),
-        }
+      if (mainFileTransformer.matchesId(id)) {
+        return mainFileTransformer.addStyleSheet(
+          src,
+          configuration.globalStylesheetPaths
+        )
       }
     },
   }
