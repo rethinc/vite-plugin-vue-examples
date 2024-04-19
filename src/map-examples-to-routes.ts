@@ -41,19 +41,19 @@ const routeExample = (
 }
 
 const routeGroup = async (
-  folderPath: string,
-  folderName: string,
+  dirPath: string,
+  dirName: string,
   examplesFileSuffix: string
 ): Promise<GroupRoute | null> => {
   const subRoutes = await mapExamplesToRoutesRecursively(
-    folderPath,
+    dirPath,
     examplesFileSuffix
   )
   if (subRoutes.length === 0) {
     return null
   }
   return {
-    name: folderName,
+    name: dirName,
     routes: subRoutes,
   }
 }
@@ -64,21 +64,21 @@ const mapExamplesToRoutesRecursively = async (
 ): Promise<Route[]> => {
   const contents = await fsp.readdir(examplesDirectory)
   const routes: Route[] = []
-  for (const fileOrFolderName of contents) {
-    const fileOrFolderPath = path.join(examplesDirectory, fileOrFolderName)
-    const lstat = await fsp.lstat(fileOrFolderPath)
-    if (lstat.isFile() && fileOrFolderName.endsWith(examplesFileSuffix)) {
+  for (const fileOrDirName of contents) {
+    const fileOrDirPath = path.join(examplesDirectory, fileOrDirName)
+    const lstat = await fsp.lstat(fileOrDirPath)
+    if (lstat.isFile() && fileOrDirName.endsWith(examplesFileSuffix)) {
       const route = routeExample(
-        fileOrFolderPath,
-        fileOrFolderName,
+        fileOrDirPath,
+        fileOrDirName,
         examplesFileSuffix
       )
       routes.push(route)
     }
     if (lstat.isDirectory()) {
       const route = await routeGroup(
-        fileOrFolderPath,
-        fileOrFolderName,
+        fileOrDirPath,
+        fileOrDirName,
         examplesFileSuffix
       )
       if (route) {

@@ -32,7 +32,7 @@ describe('examplesAppMainFileTransformer', () => {
   describe('addStyleSheet', () => {
     it('should add style sheets on top', () => {
       const transformer = examplesAppMainFileTransformer('any')
-      const stylesheetPaths = ['global.scss', 'folder/global.scss']
+      const stylesheetPaths = ['global.scss', '@dir/global.scss']
 
       const transformedMainSource = transformer.addStyleSheet(
         'code',
@@ -40,7 +40,7 @@ describe('examplesAppMainFileTransformer', () => {
       )
 
       expect(transformedMainSource).toBe(
-        `import 'global.scss'\nimport 'folder/global.scss'\ncode`
+        `import 'global.scss'\nimport '@dir/global.scss'\ncode`
       )
     })
   })

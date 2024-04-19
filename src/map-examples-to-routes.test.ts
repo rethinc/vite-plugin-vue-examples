@@ -13,54 +13,51 @@ import {
 } from './map-examples-to-routes'
 
 describe('mapExamplesToRoutes', () => {
-  const rootFolder = path.resolve(os.tmpdir(), 'vue-examples-tests/')
+  const rootDir = path.resolve(os.tmpdir(), 'vue-examples-tests/')
   const vueExamplesSuffix = '.example.vue'
 
   beforeEach(async () => {
-    if (fs.existsSync(rootFolder)) {
-      await fsp.rm(rootFolder, { recursive: true, force: true })
+    if (fs.existsSync(rootDir)) {
+      await fsp.rm(rootDir, { recursive: true, force: true })
     }
-    await fsp.mkdir(rootFolder, { recursive: true })
+    await fsp.mkdir(rootDir, { recursive: true })
   })
 
   it('should map examples files to example route', async () => {
     const exampleFile = 'Dummy.example.vue'
-    await fsp.writeFile(path.resolve(rootFolder, exampleFile), '')
+    await fsp.writeFile(path.resolve(rootDir, exampleFile), '')
 
-    const routes = await mapExamplesToRoutes(rootFolder, vueExamplesSuffix)
+    const routes = await mapExamplesToRoutes(rootDir, vueExamplesSuffix)
 
     const exampleRoute = routes[0] as ExampleRoute
     expect(exampleRoute).toStrictEqual({
       name: 'Dummy',
-      importPath: path.resolve(rootFolder, exampleFile),
+      importPath: path.resolve(rootDir, exampleFile),
     })
   })
 
-  it('should map folders with examples to group route', async () => {
-    const exampleFolder = 'folder/'
+  it('should map directories with examples to group route', async () => {
+    const exampleDir = 'dir/'
     const exampleFile = 'Dummy.example.vue'
-    await fsp.mkdir(path.resolve(rootFolder, exampleFolder), {
+    await fsp.mkdir(path.resolve(rootDir, exampleDir), {
       recursive: true,
     })
-    await fsp.writeFile(
-      path.resolve(rootFolder, exampleFolder, exampleFile),
-      ''
-    )
+    await fsp.writeFile(path.resolve(rootDir, exampleDir, exampleFile), '')
 
-    const routes = await mapExamplesToRoutes(rootFolder, vueExamplesSuffix)
+    const routes = await mapExamplesToRoutes(rootDir, vueExamplesSuffix)
 
     const groupRoute = routes[0] as GroupRoute
-    expect(groupRoute.name).toBe('folder')
+    expect(groupRoute.name).toBe('dir')
     expect(groupRoute.routes.length).toBe(1)
   })
 
-  it('should not map folders without examples', async () => {
-    const exampleFolder = 'folder/'
-    await fsp.mkdir(path.resolve(rootFolder, exampleFolder), {
+  it('should not map directories without examples', async () => {
+    const exampleDir = 'dir/'
+    await fsp.mkdir(path.resolve(rootDir, exampleDir), {
       recursive: true,
     })
 
-    const routes = await mapExamplesToRoutes(rootFolder, vueExamplesSuffix)
+    const routes = await mapExamplesToRoutes(rootDir, vueExamplesSuffix)
 
     expect(routes.length).toBe(0)
   })

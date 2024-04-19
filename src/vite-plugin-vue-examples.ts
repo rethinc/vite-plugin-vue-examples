@@ -31,10 +31,10 @@ export default (
 
   const routeRecordsId = 'virtual:vue-examples-route-records'
   const resolvedRouteRecordsId = '\0' + routeRecordsId
-  const scriptFolder = path.dirname(url.fileURLToPath(import.meta.url))
-  const examplesAppFolder = path.resolve(scriptFolder, 'examples-app/')
+  const scriptDir = path.dirname(url.fileURLToPath(import.meta.url))
+  const examplesAppDir = path.resolve(scriptDir, 'examples-app/')
 
-  const mainFileTransformer = examplesAppMainFileTransformer(examplesAppFolder)
+  const mainFileTransformer = examplesAppMainFileTransformer(examplesAppDir)
   return {
     name: 'vue-examples',
     configResolved(viteConfig) {
@@ -46,7 +46,7 @@ export default (
     configureServer: (server) => {
       server.middlewares.use(async (req, res, next) => {
         if (req.url === configuration.examplesAppPath) {
-          const htmlFilePath = path.join(examplesAppFolder, 'index.html')
+          const htmlFilePath = path.join(examplesAppDir, 'index.html')
           const htmlUrl = path.join(req.url, 'index.html')
           const originalHtml = await fsp.readFile(htmlFilePath, 'utf-8')
           const html = await server.transformIndexHtml(htmlUrl, originalHtml)
@@ -79,7 +79,7 @@ export default (
       }
       if (id.startsWith(configuration.examplesAppPath)) {
         const relativeFilePath = id.replace(configuration.examplesAppPath, '')
-        const absoluteFilePath = path.join(examplesAppFolder, relativeFilePath)
+        const absoluteFilePath = path.join(examplesAppDir, relativeFilePath)
         const resolvedPath = await this.resolve(absoluteFilePath)
         return resolvedPath?.id ?? id
       }
