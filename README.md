@@ -45,6 +45,13 @@ Check format/lint issues, typescript types and run tests
 npm run verify
 ```
 
+### Release
+
+```bash
+NPM_AUTH_TOKEN="<Npm Auth Token>" docker build --target release --progress plain --secret id=NPM_AUTH_TOKEN .
+
+```
+
 ### Dependencies
 
 Check for updated dependencies

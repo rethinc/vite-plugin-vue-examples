@@ -11,7 +11,6 @@ COPY --from=install_dependencies /app /app
 COPY src src
 COPY *.json .
 COPY *.ts .
-RUN echo "hallo welt"
 RUN npm run verify
 
 FROM base AS build
@@ -19,8 +18,10 @@ WORKDIR /app
 COPY --from=verify_app /app /app
 RUN npm run build
 
-FROM base AS publish
+FROM base AS release
 WORKDIR /app
 COPY --from=build /app /app
-RUN npm publish --dry-run
+RUN --mount=type=secret,id=NPM_AUTH_TOKEN
+RUN --mount=type=secret,id=NPM_AUTH_TOKEN  echo "//registry.npmjs.org/:_authToken=$(cat /run/secrets/NPM_AUTH_TOKEN)" > .npmrc
+RUN npm publish
 
