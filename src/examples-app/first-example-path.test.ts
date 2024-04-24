@@ -40,4 +40,7 @@ describe('firstExamplePath', () => {
 
     expect(path).toStrictEqual('')
   })
+  it('should fail', () => {
+    expect(true).toBe(false)
+  })
 })
