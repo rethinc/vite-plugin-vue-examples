@@ -15,7 +15,7 @@ RUN npm run verify
 
 FROM base AS build
 WORKDIR /app
-COPY --from=verify_app /app /app
+COPY --from=verify /app /app
 RUN npm run build
 
 FROM base AS release
