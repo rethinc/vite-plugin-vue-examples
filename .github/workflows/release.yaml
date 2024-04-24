@@ -19,7 +19,7 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-      - name: Build Docker image - stage verify
+      - name: Build Docker image - stage release
         uses: docker/build-push-action@v5.3.0
         with:
           context: .
