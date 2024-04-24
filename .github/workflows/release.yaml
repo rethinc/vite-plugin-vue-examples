@@ -1,13 +1,8 @@
-name: Verify
-
-on:
-  push:
-    branches:
-      - main
+name: Release
 
 jobs:
-  verify:
-    name: Verify
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,7 +20,9 @@ jobs:
         uses: docker/build-push-action@v5.3.0
         with:
           context: .
-          target: verify
+          target: release
+          secrets: |
+            NPM_AUTH_TOKEN=${{ secrets.NPM_AUTH_TOKEN }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Prevent consistently growing buildx cache
