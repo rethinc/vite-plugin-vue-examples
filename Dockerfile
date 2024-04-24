@@ -5,7 +5,7 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm ci
 
-FROM base AS verify_app
+FROM base AS verify
 WORKDIR /app
 COPY --from=install_dependencies /app /app
 COPY src src
