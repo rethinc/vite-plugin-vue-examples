@@ -3,6 +3,6 @@ import ExamplesNavigation from './ExamplesNavigation.vue'
 </script>
 
 <template>
-  <ExamplesNavigation />
   <RouterView />
+  <ExamplesNavigation />
 </template>
