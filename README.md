@@ -45,11 +45,11 @@ Check format/lint issues, typescript types and run tests
 npm run verify
 ```
 
-### Release
+### Publish
 
-```bash
-NPM_AUTH_TOKEN="<Npm Auth Token>" docker build --target release --progress plain --secret id=NPM_AUTH_TOKEN .
-
+```sh
+docker build -t publish_vue_examples --progress plain .
+docker run -e NPM_AUTH_TOKEN="<Npm Auth Token>" publish_vue_examples
 ```
 
 ### Dependencies

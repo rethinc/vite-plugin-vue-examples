@@ -18,10 +18,10 @@ WORKDIR /app
 COPY --from=verify /app /app
 RUN npm run build
 
-FROM base AS release
+FROM base
 WORKDIR /app
-COPY --from=build /app /app
-RUN --mount=type=secret,id=NPM_AUTH_TOKEN
-RUN --mount=type=secret,id=NPM_AUTH_TOKEN  echo "//registry.npmjs.org/:_authToken=$(cat /run/secrets/NPM_AUTH_TOKEN)" > .npmrc
-RUN npm publish
+COPY --from=build /app/dist /app/dist
+COPY --from=build /app/package.json /app/package.json
+COPY docker-entrypoint.sh /bin/entrypoint.sh
+ENTRYPOINT ["/bin/entrypoint.sh"]
 
