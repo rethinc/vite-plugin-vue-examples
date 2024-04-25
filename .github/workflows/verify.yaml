@@ -22,12 +22,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
       - name: Build publish_vite_plugin_vue_examples docker image
-        uses: docker/build-push-action@v5.3.0
-        with:
-          context: .
-          tags: publish_vite_plugin_vue_examples
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        run: |
+          docker buildx build \
+          --cache-from type=local,src=/tmp/.buildx-cache \
+          --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max \
+          --tag publish_vite_plugin_vue_examples \
+          .
       - name: Prevent consistently growing buildx cache
         run: |
           rm -rf /tmp/.buildx-cache
