@@ -29,7 +29,7 @@ jobs:
           .
       - name: Publish vite_plugin_vue_examples
         run: |
-          docker image ls
+          docker run -e NPM_AUTH_TOKEN="${{ secrets.NPM_AUTH_TOKEN }}" publish_vite_plugin_vue_examples
       - name: Prevent consistently growing buildx cache
         run: |
           rm -rf /tmp/.buildx-cache
