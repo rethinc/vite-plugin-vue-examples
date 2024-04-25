@@ -1,4 +1,4 @@
-name: Release
+name: Publish
 
 on:
   workflow_dispatch:
@@ -19,15 +19,16 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-      - name: Build Docker image - stage release
+      - name: Build publish_vite_plugin_vue_examples docker image - stage release
         uses: docker/build-push-action@v5.3.0
         with:
           context: .
-          target: release
-          secrets: |
-            NPM_AUTH_TOKEN=${{ secrets.NPM_AUTH_TOKEN }}
+          tags: publish_vite_plugin_vue_examples
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+      - name: Publish vite_plugin_vue_examples
+        run: |
+          docker run -e NPM_AUTH_TOKEN="${{ secrets.NPM_AUTH_TOKEN }}" publish_vue_examples
       - name: Prevent consistently growing buildx cache
         run: |
           rm -rf /tmp/.buildx-cache

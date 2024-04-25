@@ -21,11 +21,11 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-      - name: Build Docker image - stage verify
+      - name: Build publish_vite_plugin_vue_examples docker image
         uses: docker/build-push-action@v5.3.0
         with:
           context: .
-          target: verify
+          tags: publish_vite_plugin_vue_examples
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Prevent consistently growing buildx cache
