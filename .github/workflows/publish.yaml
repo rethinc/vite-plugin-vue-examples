@@ -28,7 +28,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Publish vite_plugin_vue_examples
         run: |
-          docker -v "/var/run/docker.sock":"/var/run/docker.sock" image ls
+          docker image ls
       - name: Prevent consistently growing buildx cache
         run: |
           rm -rf /tmp/.buildx-cache
