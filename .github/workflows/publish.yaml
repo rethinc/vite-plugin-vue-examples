@@ -19,13 +19,13 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-      - name: Build publish_vite_plugin_vue_examples docker image - stage release
-        uses: docker/build-push-action@v5.3.0
-        with:
-          context: .
-          tags: publish_vite_plugin_vue_examples
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+      - name: Build publish_vite_plugin_vue_examples docker image
+        run: |
+          docker buildx build \
+          --cache-from type=local,src=/tmp/.buildx-cache \
+          --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max \
+          --tag publish_vite_plugin_vue_examples \
+          .
       - name: Publish vite_plugin_vue_examples
         run: |
           docker image ls
