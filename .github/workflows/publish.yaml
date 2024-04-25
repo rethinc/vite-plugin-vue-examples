@@ -25,7 +25,7 @@ jobs:
           --cache-from type=local,src=/tmp/.buildx-cache \
           --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max \
           --tag publish_vite_plugin_vue_examples \
-          --load
+          --load \
           .
       - name: Publish vite_plugin_vue_examples
         run: |
