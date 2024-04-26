@@ -1,4 +1,4 @@
-FROM node:20.12.0-alpine AS base
+FROM node:20.12.2-alpine AS base
 FROM base AS install_dependencies
 WORKDIR /app
 COPY package.json .
