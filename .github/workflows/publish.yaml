@@ -27,9 +27,13 @@ jobs:
           --tag publish_vite_plugin_vue_examples \
           --load \
           .
-      - name: Publish vite_plugin_vue_examples
+#      - name: Publish vite_plugin_vue_examples
+#        run: |
+#          docker run -e NPM_AUTH_TOKEN="${{ secrets.NPM_AUTH_TOKEN }}" publish_vite_plugin_vue_examples
+      - name: Tag published version
         run: |
-          docker run -e NPM_AUTH_TOKEN="${{ secrets.NPM_AUTH_TOKEN }}" publish_vite_plugin_vue_examples
+          package_json=$(cat package.json)
+          echo "${{fromJson(package_json).version}}"
       - name: Prevent consistently growing buildx cache
         run: |
           rm -rf /tmp/.buildx-cache
