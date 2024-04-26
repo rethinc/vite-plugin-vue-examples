@@ -32,8 +32,8 @@ jobs:
 #          docker run -e NPM_AUTH_TOKEN="${{ secrets.NPM_AUTH_TOKEN }}" publish_vite_plugin_vue_examples
       - name: Tag published version
         run: |
-          package_json=$(cat package.json)
-          echo "${{fromJSON(env.package_json).version}}"
+          version=$(jq -r '.version' package.json)
+          echo "$version"
       - name: Prevent consistently growing buildx cache
         run: |
           rm -rf /tmp/.buildx-cache
