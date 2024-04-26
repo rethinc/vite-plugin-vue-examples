@@ -33,7 +33,7 @@ jobs:
       - name: Tag published version
         run: |
           package_json=$(cat package.json)
-          echo "${{fromJson(package_json).version}}"
+          echo "${{fromJSON(env.package_json).version}}"
       - name: Prevent consistently growing buildx cache
         run: |
           rm -rf /tmp/.buildx-cache
