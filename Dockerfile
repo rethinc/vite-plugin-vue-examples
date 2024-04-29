@@ -9,7 +9,7 @@ FROM base AS verify
 WORKDIR /app
 COPY --from=install_dependencies /app /app
 COPY src src
-COPY *.json .
+COPY .prettierrc.json eslint.config.js index.html tsconfig.json ./
 COPY *.ts .
 RUN npm run verify
 
