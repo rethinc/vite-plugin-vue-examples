@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouteRecordRaw } from 'vue-router'
+
 import ExamplesNavigationListEntry from './ExamplesNavigationListEntry.vue'
 
 withDefaults(

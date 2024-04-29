@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { RouteRecordRaw } from 'vue-router'
 import { computed } from 'vue'
+import { RouteRecordRaw } from 'vue-router'
+
 import ExamplesNavigationList from './ExamplesNavigationList.vue'
 
 const props = withDefaults(

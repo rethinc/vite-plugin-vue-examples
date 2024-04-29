@@ -1,5 +1,6 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
 import { routeRecords } from 'virtual:vue-examples-route-records'
+import { createRouter, createWebHashHistory } from 'vue-router'
+
 import ExampleNotFound from './ExampleNotFound.vue'
 import { firstExamplePath } from './first-example-path'
 

@@ -1,5 +1,5 @@
-import * as path from 'path'
 import * as fsp from 'fs/promises'
+import * as path from 'path'
 
 export type Route = GroupRoute | ExampleRoute
 

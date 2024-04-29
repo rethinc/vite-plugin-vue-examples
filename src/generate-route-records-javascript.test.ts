@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { ExampleRoute, GroupRoute } from './map-examples-to-routes'
+import { describe, expect, it } from 'vitest'
+
 import { generateRouteRecordsJavascript } from './generate-route-records-javascript'
+import { ExampleRoute, GroupRoute } from './map-examples-to-routes'
 
 describe('generateRouteRecordsJavascript', () => {
   it('should add import statement for ExampleRoute', () => {

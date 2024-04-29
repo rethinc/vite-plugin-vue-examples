@@ -1,15 +1,16 @@
-import * as fsp from 'fs/promises'
 import * as fs from 'fs'
-import * as path from 'path'
+import * as fsp from 'fs/promises'
 import * as os from 'os'
+import * as path from 'path'
 import { beforeEach, describe, expect, it } from 'vitest'
+
 import {
-  mapExamplesToRoutes,
   ExampleRoute,
   GroupRoute,
-  isGroupRoute,
-  Route,
   isExampleRoute,
+  isGroupRoute,
+  mapExamplesToRoutes,
+  Route,
 } from './map-examples-to-routes'
 
 describe('mapExamplesToRoutes', () => {

@@ -1,10 +1,11 @@
-import * as path from 'path'
 import * as fsp from 'fs/promises'
+import * as path from 'path'
 import * as url from 'url'
 import { PluginOption, send } from 'vite'
+
 import { examplesAppMainFileTransformer } from './examples-app-main-file-transformer'
-import { mapExamplesToRoutes } from './map-examples-to-routes'
 import { generateRouteRecordsJavascript } from './generate-route-records-javascript'
+import { mapExamplesToRoutes } from './map-examples-to-routes'
 
 export interface VueExamplesPluginConfiguration {
   examplesRootPath: string

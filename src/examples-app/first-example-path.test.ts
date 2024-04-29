@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { RouteRecordRaw } from 'vue-router'
 import { Component } from 'vue'
+import { RouteRecordRaw } from 'vue-router'
+
 import { firstExamplePath } from './first-example-path'
 
 const dummyComponent: Component = {}

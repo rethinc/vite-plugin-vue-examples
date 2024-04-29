@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { routeRecords } from 'virtual:vue-examples-route-records'
+import { ref } from 'vue'
+
 import ExamplesNavigationList from './ExamplesNavigationList.vue'
 
 const showOverlay = ref(false)
