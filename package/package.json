@@ -25,6 +25,9 @@
     "test": "vitest run"
   },
   "devDependencies": {
+    "@types/node": "^20.12.8",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "rollup-plugin-copy": "^3.5.0",
     "sass": "^1.76.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
