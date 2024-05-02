@@ -1,34 +1,34 @@
-import vue from '@vitejs/plugin-vue'
-import copy from 'rollup-plugin-copy'
-import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
+import vue from "@vitejs/plugin-vue";
+import copy from "rollup-plugin-copy";
+import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
 
-import vueExamples from './src/vite-plugin-vue-examples'
+import vueExamples from "./src/vite-plugin-vue-examples";
 
 export default defineConfig({
   plugins: [
     vue(),
-    vueExamples({ globalStylesheetPaths: ['/example/global.scss'] }),
-    dts({ include: ['src/vite-plugin-vue-examples.ts'] }),
+    vueExamples({ globalStylesheetPaths: ["/example/global.scss"] }),
+    dts({ include: ["src/vite-plugin-vue-examples.ts"] }),
     copy({
       verbose: true,
-      hook: 'writeBundle',
+      hook: "writeBundle",
       targets: [
         {
-          src: 'src/examples-app',
-          dest: 'dist/',
+          src: "src/examples-app",
+          dest: "dist/",
         },
       ],
     }),
   ],
   build: {
     lib: {
-      entry: 'src/vite-plugin-vue-examples.ts',
-      fileName: 'vite-plugin-vue-examples',
-      formats: ['es'],
+      entry: "src/vite-plugin-vue-examples.ts",
+      fileName: "vite-plugin-vue-examples",
+      formats: ["es"],
     },
     rollupOptions: {
-      external: ['vite', 'path', 'fs/promises', 'url'],
+      external: ["vite", "path", "fs/promises", "url"],
     },
   },
-})
+});

@@ -1,7 +1,7 @@
-import '/example/global.scss'
+import "/example/global.scss";
 
-import { createApp } from 'vue'
+import { createApp } from "vue";
 
-import ExampleApp from './ExampleApp.vue'
+import ExampleApp from "./ExampleApp.vue";
 
-createApp(ExampleApp).mount('#app')
+createApp(ExampleApp).mount("#app");

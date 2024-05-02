@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ExamplesNavigation from './ExamplesNavigation.vue'
+import ExamplesNavigation from "./ExamplesNavigation.vue";
 </script>
 
 <template>

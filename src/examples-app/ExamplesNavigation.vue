@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { routeRecords } from 'virtual:vue-examples-route-records'
-import { ref } from 'vue'
+import { routeRecords } from "virtual:vue-examples-route-records";
+import { ref } from "vue";
 
-import ExamplesNavigationList from './ExamplesNavigationList.vue'
+import ExamplesNavigationList from "./ExamplesNavigationList.vue";
 
-const showOverlay = ref(false)
+const showOverlay = ref(false);
 
 const onClickExamples = () => {
-  showOverlay.value = true
-}
+  showOverlay.value = true;
+};
 
 const onClickClose = () => {
-  showOverlay.value = false
-}
+  showOverlay.value = false;
+};
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const onClickClose = () => {
 </template>
 
 <style scoped lang="scss">
-@import './styles/variables.scss';
+@import "./styles/variables.scss";
 
 * {
   all: revert;

@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { RouteRecordRaw } from 'vue-router'
+import { computed } from "vue";
+import { RouteRecordRaw } from "vue-router";
 
-import ExamplesNavigationList from './ExamplesNavigationList.vue'
+import ExamplesNavigationList from "./ExamplesNavigationList.vue";
 
 const props = withDefaults(
   defineProps<{
-    routeRecord: RouteRecordRaw
-    currentPath?: string
+    routeRecord: RouteRecordRaw;
+    currentPath?: string;
   }>(),
-  { currentPath: '' }
-)
+  { currentPath: "" },
+);
 
 const isExample = computed(() => {
-  return !!props.routeRecord.component
-})
+  return !!props.routeRecord.component;
+});
 
 const completeRoutePath = computed(() => {
-  return `${props.currentPath}/${props.routeRecord.path}`
-})
+  return `${props.currentPath}/${props.routeRecord.path}`;
+});
 </script>
 
 <template>
@@ -40,7 +40,7 @@ const completeRoutePath = computed(() => {
 </template>
 
 <style scoped lang="scss">
-@import 'styles/variables.scss';
+@import "styles/variables.scss";
 
 .examples-navigation-list-entry {
   color: $color-font-secondary;
