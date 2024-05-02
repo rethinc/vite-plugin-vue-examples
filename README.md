@@ -48,10 +48,27 @@ Check format/lint issues, typescript types and run tests
 npm run verify
 ```
 
-### Publish
+### Continuous integration and publishing
+For continuous integration and package publishing a multistage Docker build is used. this enables ci/cd execution both locally and on a ci server.
 
-```sh
-docker build -t publish_vue_examples --progress plain .
+Install dependencies:
+```shell
+docker build -t publish_vue_examples --target install_dependencies .
+```
+
+Verify package:
+```shell
+docker build -t publish_vue_examples --target verify .
+```
+
+Build package:
+```shell
+docker build -t publish_vue_examples --target build .
+```
+
+Publish package:
+```shell
+docker build -t publish_vue_examples .
 docker run -e NPM_AUTH_TOKEN="<Npm Auth Token>" publish_vue_examples
 ```
 
