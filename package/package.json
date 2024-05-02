@@ -1,0 +1,39 @@
+{
+  "name": "vite-plugin-vue-examples",
+  "description": "Vite plugin to test vue files isolated",
+  "author": "re:thinc",
+  "license": "GPL-3.0",
+  "private": false,
+  "version": "0.0.5",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rethinc/vite-plugin-vue-examples.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/vite-plugin-vue-examples.js"
+    }
+  },
+  "scripts": {
+    "dev": "rm -rf dist && vite build -w -c vite.config.dev.ts",
+    "build": "vite build",
+    "check-types": "npx vue-tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "sass": "^1.76.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vite-plugin-dts": "^3.9.0",
+    "vitest": "^1.5.3",
+    "vue-tsc": "^2.0.16"
+  },
+  "dependencies": {
+    "vue": "^3.4.26",
+    "vue-router": "^4.3.2"
+  }
+}

@@ -25,7 +25,7 @@ export default typescriptEslint.config(
     },
   },
   {
-    ignores: ["dist/*"],
+    ignores: ["**/dist/*"],
   },
   eslintPluginPrettierRecommended,
 );

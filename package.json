@@ -1,31 +1,29 @@
 {
-  "name": "vite-plugin-vue-examples",
+  "name": "vite-plugin-vue-examples-workspaces",
   "description": "Vite plugin to test vue files isolated",
   "author": "re:thinc",
   "license": "GPL-3.0",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/rethinc/vite-plugin-vue-examples.git"
   },
   "type": "module",
+  "workspaces": [
+    "package"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "npm run dev -w package",
+    "build": "npm run build -w package",
     "lint": "eslint .",
     "fix-lint-errors": "eslint . --fix",
-    "check-types": "npx vue-tsc --noEmit",
+    "check-types": "npm run check-types -w package",
     "verify": "npm run lint && npm run check-types && npm run test",
-    "test": "vitest run"
-  },
-  "dependencies": {
-    "vue": "^3.4.26",
-    "vue-router": "^4.3.2"
+    "test": "npm run test -w package"
   },
   "devDependencies": {
     "@eslint/js": "^9.1.1",
-    "@vitejs/plugin-vue": "^5.0.4",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
@@ -33,14 +31,7 @@
     "eslint-plugin-vue": "^9.25.0",
     "npm-check-updates": "^16.14.20",
     "prettier": "^3.2.5",
-    "rollup-plugin-copy": "^3.5.0",
-    "sass": "^1.75.0",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.7.1",
-    "vite": "^5.2.10",
-    "vite-plugin-dts": "^3.9.0",
-    "vitest": "^1.5.2",
-    "vue-tsc": "^2.0.14"
+    "typescript-eslint": "^7.7.1"
   },
   "files": [
     "dist"

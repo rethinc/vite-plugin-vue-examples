@@ -3,12 +3,9 @@ import copy from "rollup-plugin-copy";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
-import vueExamples from "./src/vite-plugin-vue-examples";
-
 export default defineConfig({
   plugins: [
     vue(),
-    vueExamples({ globalStylesheetPaths: ["/example/global.scss"] }),
     dts({ include: ["src/vite-plugin-vue-examples.ts"] }),
     copy({
       verbose: true,

@@ -29,7 +29,6 @@ export default (
     examplesAppPath: path.resolve("/", examplesAppPath) + "/",
     globalStylesheetPaths,
   };
-
   const routeRecordsId = "virtual:vue-examples-route-records";
   const resolvedRouteRecordsId = "\0" + routeRecordsId;
   const scriptDir = path.dirname(url.fileURLToPath(import.meta.url));
