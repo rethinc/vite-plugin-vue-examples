@@ -11,7 +11,7 @@ FROM base AS verify
 WORKDIR /app
 COPY --from=install_dependencies /app /app
 COPY package package
-COPY eslint.config.js index.html ./
+COPY eslint.config.js .prettierrc.json ./
 COPY *.ts .
 RUN npm run verify
 
