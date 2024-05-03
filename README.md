@@ -13,17 +13,17 @@ nvm install
 npm install
 ```
 
-Run example app locally
+Build package and run dev-app
 ```
 npm run dev
-```
+``` 
 
-Build app locally (bundle will be created in `/dist` folder)
+Build package (bundle will be created in `/package/dist` folder)
 ```
 npm run build
 ```
 
-Check code format issues
+Check code for linter issues
 ```
 npm run lint
 ```
