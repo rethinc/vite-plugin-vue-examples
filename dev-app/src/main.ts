@@ -1,4 +1,4 @@
-import "/example/global.scss";
+import "/src/global.scss";
 
 import { createApp } from "vue";
 

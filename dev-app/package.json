@@ -1,0 +1,23 @@
+{
+  "name": "vite-plugin-vue-examples-dev-app",
+  "author": "re:thinc",
+  "license": "GPL-3.0",
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.26"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10",
+    "vite-plugin-vue-examples": "^0.0.5",
+    "vue-tsc": "^2.0.16"
+  }
+}

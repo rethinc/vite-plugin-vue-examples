@@ -11,7 +11,8 @@
   },
   "type": "module",
   "workspaces": [
-    "package"
+    "package",
+    "dev-app"
   ],
   "scripts": {
     "dev": "npm run dev -w package",
