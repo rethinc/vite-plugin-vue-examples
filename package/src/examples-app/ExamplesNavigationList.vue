@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw } from 'vue-router'
 
-import ExamplesNavigationListEntry from "./ExamplesNavigationListEntry.vue";
+import ExamplesNavigationListEntry from './ExamplesNavigationListEntry.vue'
 
 withDefaults(
   defineProps<{
-    routeRecords: RouteRecordRaw[];
-    currentPath?: string;
+    routeRecords: RouteRecordRaw[]
+    currentPath?: string
   }>(),
-  { currentPath: "" },
-);
+  { currentPath: '' },
+)
 </script>
 
 <template>
@@ -24,7 +24,7 @@ withDefaults(
 </template>
 
 <style scoped lang="scss">
-@import "styles/variables.scss";
+@import 'styles/variables.scss';
 
 .examples-navigation-list {
   padding: 0;

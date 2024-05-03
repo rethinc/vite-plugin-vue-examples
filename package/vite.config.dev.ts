@@ -1,5 +1,5 @@
-import { mergeConfig } from "vite";
+import { mergeConfig } from 'vite'
 
-import defaultConfig from "./vite.config";
+import defaultConfig from './vite.config'
 
-export default mergeConfig(defaultConfig, { build: { emptyOutDir: false } });
+export default mergeConfig(defaultConfig, { build: { emptyOutDir: false } })

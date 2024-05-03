@@ -1,44 +1,44 @@
-import { describe, expect, it } from "vitest";
-import { Component } from "vue";
-import { RouteRecordRaw } from "vue-router";
+import { describe, expect, it } from 'vitest'
+import { Component } from 'vue'
+import { RouteRecordRaw } from 'vue-router'
 
-import { firstExamplePath } from "./first-example-path";
+import { firstExamplePath } from './first-example-path'
 
-const dummyComponent: Component = {};
+const dummyComponent: Component = {}
 
-describe("firstExamplePath", () => {
-  it("should return path of example route", () => {
+describe('firstExamplePath', () => {
+  it('should return path of example route', () => {
     const routeRecords: RouteRecordRaw[] = [
       {
-        path: "group",
-        children: [{ path: "NestedExample", component: dummyComponent }],
+        path: 'group',
+        children: [{ path: 'NestedExample', component: dummyComponent }],
       },
-      { path: "Example", component: dummyComponent },
-    ];
+      { path: 'Example', component: dummyComponent },
+    ]
 
-    const path = firstExamplePath(routeRecords);
+    const path = firstExamplePath(routeRecords)
 
-    expect(path).toStrictEqual("Example");
-  });
+    expect(path).toStrictEqual('Example')
+  })
 
-  it("should return complete path to example in group when no example is found in root level", () => {
+  it('should return complete path to example in group when no example is found in root level', () => {
     const routeRecords: RouteRecordRaw[] = [
       {
-        path: "group",
-        children: [{ path: "NestedExample", component: dummyComponent }],
+        path: 'group',
+        children: [{ path: 'NestedExample', component: dummyComponent }],
       },
-    ];
+    ]
 
-    const path = firstExamplePath(routeRecords);
+    const path = firstExamplePath(routeRecords)
 
-    expect(path).toStrictEqual("group/NestedExample");
-  });
+    expect(path).toStrictEqual('group/NestedExample')
+  })
 
-  it("should return empty path when no examples found", () => {
-    const routeRecords: RouteRecordRaw[] = [{ path: "group", children: [] }];
+  it('should return empty path when no examples found', () => {
+    const routeRecords: RouteRecordRaw[] = [{ path: 'group', children: [] }]
 
-    const path = firstExamplePath(routeRecords);
+    const path = firstExamplePath(routeRecords)
 
-    expect(path).toStrictEqual("");
-  });
-});
+    expect(path).toStrictEqual('')
+  })
+})
