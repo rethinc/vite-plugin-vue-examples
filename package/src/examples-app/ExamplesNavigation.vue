@@ -17,8 +17,8 @@ const onClickClose = () => {
 
 <template>
   <div class="examples-navigation">
-    <button class="button-examples" @click="onClickExamples">Examples</button>
-    <div v-if="showOverlay" class="examples-list-overlay">
+    <button class="button" @click="onClickExamples">Examples</button>
+    <div v-if="showOverlay" class="examples-list-overlay" @click="onClickClose">
       <div class="header">
         <button class="button" @click="onClickClose">Close</button>
       </div>
@@ -44,17 +44,13 @@ const onClickClose = () => {
     padding: 4px 12px;
     color: $color-font-primary;
     background-color: $color-background-secondary;
+    position: fixed;
+    right: 4px;
+    bottom: 4px;
 
     &:hover {
       background-color: $color-highlight;
     }
-  }
-
-  .button-examples {
-    @extend .button;
-    position: fixed;
-    right: 4px;
-    bottom: 4px;
   }
 
   .examples-list-overlay {
