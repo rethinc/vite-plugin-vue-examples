@@ -32,7 +32,7 @@ jobs:
           docker run -e NPM_AUTH_TOKEN="${{ secrets.NPM_AUTH_TOKEN }}" publish_vite_plugin_vue_examples
       - name: Tag published version
         run: |
-          version=$(jq -r '.version' package.json)
+          version=$(jq -r '.version' "package/package.json")
           git config --global user.name "Github Action"
           git config --global user.email ""
           git tag "v${version}"
