@@ -7,8 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "check-types": "npx vue-tsc --noEmit"
   },
   "dependencies": {
     "vue": "^3.4.26"

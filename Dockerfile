@@ -18,7 +18,7 @@ RUN npm run verify
 FROM base AS build
 WORKDIR /app
 COPY --from=verify /app /app
-RUN npm run build
+RUN npm run build -w package
 
 FROM base
 WORKDIR /app
