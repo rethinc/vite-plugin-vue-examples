@@ -15,6 +15,10 @@ export default defineConfig({
           src: 'src/examples-app',
           dest: 'dist/',
         },
+        {
+          src: '../LICENSE',
+          dest: 'dist/',
+        },
       ],
     }),
   ],

@@ -2,14 +2,13 @@
   "name": "vite-plugin-vue-examples-workspaces",
   "description": "Vite plugin to test vue files isolated",
   "author": "re:thinc",
-  "license": "GPL-3.0",
-  "private": false,
+  "license": "LGPL-3.0-or-later",
   "version": "0.0.0",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/rethinc/vite-plugin-vue-examples.git"
   },
-  "type": "module",
   "workspaces": [
     "package",
     "dev-app"

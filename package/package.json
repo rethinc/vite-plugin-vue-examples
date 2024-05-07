@@ -2,10 +2,10 @@
   "name": "vite-plugin-vue-examples",
   "description": "Vite plugin to test vue files isolated",
   "author": "re:thinc",
-  "license": "GPL-3.0",
-  "private": false,
+  "license": "LGPL-3.0-or-later",
   "version": "0.0.7",
   "type": "module",
+  "private": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rethinc/vite-plugin-vue-examples.git",
