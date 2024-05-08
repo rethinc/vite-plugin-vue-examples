@@ -3,7 +3,7 @@
   "description": "Vite plugin to test vue files isolated",
   "author": "re:thinc",
   "license": "LGPL-3.0-or-later",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "private": false,
   "repository": {
