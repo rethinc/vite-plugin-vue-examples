@@ -7,7 +7,6 @@ export default defineConfig({
     vue(),
     vueExamples({
       globalStylesheetPaths: ['/src/global.scss'],
-      examplesRootPath: 'src',
     }),
   ],
 })
