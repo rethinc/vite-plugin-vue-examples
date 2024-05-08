@@ -12,8 +12,8 @@ export default defineConfig({
       hook: 'writeBundle',
       targets: [
         {
-          src: 'src/examples-app',
-          dest: 'dist/',
+          src: 'src/examples-app/index.html',
+          dest: 'dist/examples-app/',
         },
         {
           src: '../LICENSE',
@@ -23,13 +23,32 @@ export default defineConfig({
     }),
   ],
   build: {
+    cssCodeSplit: true,
     lib: {
-      entry: 'src/vite-plugin-vue-examples.ts',
-      fileName: 'vite-plugin-vue-examples',
+      entry: {
+        'vite-plugin-vue-examples': 'src/vite-plugin-vue-examples.ts',
+        'examples-app-main': 'src/examples-app/main.ts',
+      },
+      fileName: (format, entryName) => {
+        console.log('fileName', format, entryName)
+        if (entryName !== 'examples-app-main') {
+          return `${entryName}.js`
+        }
+        return `examples-app/main.js`
+      },
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['vite', 'path', 'fs/promises', 'url'],
+      external: [
+        'vite',
+        'path',
+        'fs/promises',
+        'url',
+        'virtual:vue-examples-route-records',
+      ],
+      output: {
+        assetFileNames: 'examples-app/styles.[ext]',
+      },
     },
   },
 })

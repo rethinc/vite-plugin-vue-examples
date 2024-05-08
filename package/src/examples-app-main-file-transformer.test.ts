@@ -8,7 +8,7 @@ describe('examplesAppMainFileTransformer', () => {
       const examplesAppDir = '/examplesApp'
       const transformer = examplesAppMainFileTransformer(examplesAppDir)
 
-      const matches = transformer.matchesId(`${examplesAppDir}/main.ts`)
+      const matches = transformer.matchesId(`${examplesAppDir}/main.js`)
 
       expect(matches).toBe(true)
     })
@@ -16,7 +16,7 @@ describe('examplesAppMainFileTransformer', () => {
       const examplesAppDir = '/examplesApp'
       const transformer = examplesAppMainFileTransformer(examplesAppDir)
 
-      const matches = transformer.matchesId(`${examplesAppDir}/main.ts?id=123`)
+      const matches = transformer.matchesId(`${examplesAppDir}/main.js?id=123`)
 
       expect(matches).toBe(true)
     })

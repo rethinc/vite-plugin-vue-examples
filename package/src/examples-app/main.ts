@@ -1,3 +1,5 @@
+import './env.d.ts'
+
 import { createApp } from 'vue'
 
 import App from './App.vue'

@@ -1,6 +1,6 @@
 export const examplesAppMainFileTransformer = (examplesAppDir: string) => {
   const matchesId = (id: string) => {
-    return id.startsWith(`${examplesAppDir}/main.ts`)
+    return id.startsWith(`${examplesAppDir}/main.js`)
   }
 
   const addStyleSheet = (
