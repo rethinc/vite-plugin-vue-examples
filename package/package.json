@@ -3,7 +3,7 @@
   "description": "Vite plugin to test vue files isolated",
   "author": "re:thinc",
   "license": "LGPL-3.0-or-later",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "type": "module",
   "private": false,
   "repository": {
@@ -19,6 +19,7 @@
       "import": "./dist/vite-plugin-vue-examples.js"
     }
   },
+  "types": "./dist/vite-plugin-vue-examples.d.ts",
   "scripts": {
     "dev": "rm -rf dist && vite build -w -c vite.config.dev.ts",
     "build": "vite build",
