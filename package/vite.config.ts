@@ -45,6 +45,7 @@ export default defineConfig({
         'fs/promises',
         'url',
         'virtual:vue-examples-route-records',
+        'vue',
       ],
       output: {
         assetFileNames: 'examples-app/styles.[ext]',
