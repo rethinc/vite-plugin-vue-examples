@@ -8,15 +8,18 @@ interface JavascriptData {
 const collectRouteRecordsForRoutes = (
   routes: Route[],
   javascriptData: JavascriptData,
+  index: number = 1,
 ) => {
   for (const route of routes) {
+    const path = route.name
     if (isExampleRoute(route)) {
-      javascriptData.imports += `import ${route.name} from '${route.importPath}'\n`
-      javascriptData.records += `{path: '${route.name}', component: ${route.name}},`
+      const componentName = `${route.name}${index++}`
+      javascriptData.imports += `import ${componentName} from '${route.importPath}'\n`
+      javascriptData.records += `{path: '${path}', component: ${componentName}},`
     }
     if (isGroupRoute(route)) {
-      javascriptData.records += `{path: '${route.name}', children: [`
-      collectRouteRecordsForRoutes(route.routes, javascriptData)
+      javascriptData.records += `{path: '${path}', children: [`
+      collectRouteRecordsForRoutes(route.routes, javascriptData, index)
       javascriptData.records += ']},'
     }
   }

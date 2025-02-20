@@ -12,7 +12,7 @@ describe('generateRouteRecordsJavascript', () => {
 
     const javascript = generateRouteRecordsJavascript([exampleRoute])
 
-    const expectedImport = `import Dummy from './import-path/Dummy.example.vue'`
+    const expectedImport = `import Dummy1 from './import-path/Dummy.example.vue'`
 
     expect(javascript).toContain(expectedImport)
   })
@@ -25,7 +25,7 @@ describe('generateRouteRecordsJavascript', () => {
 
     const javascript = generateRouteRecordsJavascript([exampleRoute])
 
-    const expectedRecord = `{path: 'ExampleName', component: ExampleName},`
+    const expectedRecord = `{path: 'ExampleName', component: ExampleName1},`
     expect(javascript).toContain(expectedRecord)
   })
 
@@ -41,7 +41,7 @@ describe('generateRouteRecordsJavascript', () => {
 
     const javascript = generateRouteRecordsJavascript([groupRoute])
 
-    const expectedRecord = `{path: 'GroupName', children: [{path: 'ExampleName', component: ExampleName},]},`
+    const expectedRecord = `{path: 'GroupName', children: [{path: 'ExampleName', component: ExampleName1},]},`
     expect(javascript).toContain(expectedRecord)
   })
 })
