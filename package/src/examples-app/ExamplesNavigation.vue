@@ -63,6 +63,7 @@ const onClickClose = () => {
     left: 0;
     width: 100vw;
     height: 100vh;
+    overflow-y: auto;
 
     .header {
       padding: 8px;
