@@ -9,7 +9,7 @@ const collectRouteRecordsForRoutes = (
   routes: Route[],
   javascriptData: JavascriptData,
   index: number = 1,
-) => {
+): number => {
   for (const route of routes) {
     const path = route.name
     if (isExampleRoute(route)) {
@@ -19,10 +19,11 @@ const collectRouteRecordsForRoutes = (
     }
     if (isGroupRoute(route)) {
       javascriptData.records += `{path: '${path}', children: [`
-      collectRouteRecordsForRoutes(route.routes, javascriptData, index)
+      index = collectRouteRecordsForRoutes(route.routes, javascriptData, index)
       javascriptData.records += ']},'
     }
   }
+  return index
 }
 
 export const generateRouteRecordsJavascript = (routes: Route[]) => {

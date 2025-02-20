@@ -44,4 +44,24 @@ describe('generateRouteRecordsJavascript', () => {
     const expectedRecord = `{path: 'GroupName', children: [{path: 'ExampleName', component: ExampleName1},]},`
     expect(javascript).toContain(expectedRecord)
   })
+
+  it('should iterate over recursion', () => {
+    const exampleRoute: ExampleRoute = {
+      name: 'ExampleName',
+      importPath: 'import-path/Dummy.example.vue',
+    }
+    const groupRoute: GroupRoute = {
+      name: 'GroupName',
+      routes: [exampleRoute],
+    }
+    const rootRoute: GroupRoute = {
+      name: 'Root',
+      routes: [groupRoute, exampleRoute],
+    }
+
+    const javascript = generateRouteRecordsJavascript([rootRoute])
+
+    const expectedRecord = `{path: 'Root', children: [{path: 'GroupName', children: [{path: 'ExampleName', component: ExampleName1},]},{path: 'ExampleName', component: ExampleName2},]},`
+    expect(javascript).toContain(expectedRecord)
+  })
 })
