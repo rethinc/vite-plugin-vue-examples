@@ -3,6 +3,18 @@
 ## Issues
 - Eslint package can't be updated to latest '9.x.x' version, because the package 'typescript-eslint' has eslint 8.56.x as a peer dependency. For a fresh install downgrade eslint to ^8.56.0" to get a working application again.
 
+## Usage
+Install the vite-plugin-vue-examples package via npm:
+```shell
+npm install vite-plugin-vue-examples
+````
+Add  plugin in vite.config.ts
+```typescript
+plugins [
+    vueExamples(),
+]
+```
+
 ## Developing
 [Nvm](https://github.com/nvm-sh/nvm#installing-and-updating) is used to ensure consistency in
 Node.js and npm versions. Install the specified Node.js version with the following command:
