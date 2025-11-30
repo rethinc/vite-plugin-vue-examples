@@ -2,7 +2,6 @@ import * as fsp from 'fs/promises'
 import * as path from 'path'
 import * as url from 'url'
 import { PluginOption, send } from 'vite'
-import { App } from 'vue'
 
 import { examplesAppMainFileTransformer } from './examples-app-main-file-transformer'
 import { generateRouteRecordsJavascript } from './generate-route-records-javascript'
@@ -13,7 +12,7 @@ export interface VueExamplesPluginConfiguration {
   exampleFileNameSuffix: string
   examplesAppPath: string
   globalStylesheetPaths?: string[]
-  pluginHook: (app: App<Element>) => void
+  pluginHook: string
 }
 
 const MODULE_PLUGIN_HOOK_ID = 'virtual:plugin-hook'
@@ -27,7 +26,7 @@ export default (
     examplesRootPath = '',
     examplesAppPath = 'vue-examples',
     globalStylesheetPaths = undefined,
-    pluginHook = () => {},
+    pluginHook = 'export const pluginHook = () => {}',
   } = customConfiguration
   const configuration: VueExamplesPluginConfiguration = {
     examplesRootPath,
@@ -96,7 +95,7 @@ export default (
     },
     async load(id) {
       if (id == RESOLVED_MODULE_PLUGIN_HOOK_ID) {
-        return `export const pluginHook = ${configuration.pluginHook.toString()};`
+        return configuration.pluginHook
       }
       if (id === resolvedRouteRecordsId) {
         const routes = await mapExamplesToRoutes(
