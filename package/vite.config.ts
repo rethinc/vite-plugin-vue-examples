@@ -45,6 +45,7 @@ export default defineConfig({
         'fs/promises',
         'url',
         'virtual:vue-examples-route-records',
+        'virtual:plugin-hook',
         'vue',
       ],
       output: {

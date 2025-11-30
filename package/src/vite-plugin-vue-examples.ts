@@ -2,6 +2,7 @@ import * as fsp from 'fs/promises'
 import * as path from 'path'
 import * as url from 'url'
 import { PluginOption, send } from 'vite'
+import { App } from 'vue'
 
 import { examplesAppMainFileTransformer } from './examples-app-main-file-transformer'
 import { generateRouteRecordsJavascript } from './generate-route-records-javascript'
@@ -12,7 +13,11 @@ export interface VueExamplesPluginConfiguration {
   exampleFileNameSuffix: string
   examplesAppPath: string
   globalStylesheetPaths?: string[]
+  pluginHook: (app: App<Element>) => void
 }
+
+const MODULE_PLUGIN_HOOK_ID = 'virtual:plugin-hook'
+const RESOLVED_MODULE_PLUGIN_HOOK_ID = '\0' + MODULE_PLUGIN_HOOK_ID
 
 export default (
   customConfiguration: Partial<VueExamplesPluginConfiguration> = {},
@@ -22,12 +27,14 @@ export default (
     examplesRootPath = '',
     examplesAppPath = 'vue-examples',
     globalStylesheetPaths = undefined,
+    pluginHook = () => {},
   } = customConfiguration
   const configuration: VueExamplesPluginConfiguration = {
     examplesRootPath,
     exampleFileNameSuffix,
     examplesAppPath: path.resolve('/', examplesAppPath) + '/',
     globalStylesheetPaths,
+    pluginHook,
   }
   const routeRecordsId = 'virtual:vue-examples-route-records'
   const resolvedRouteRecordsId = '\0' + routeRecordsId
@@ -74,6 +81,9 @@ export default (
     },
 
     async resolveId(id) {
+      if (id == MODULE_PLUGIN_HOOK_ID) {
+        return RESOLVED_MODULE_PLUGIN_HOOK_ID
+      }
       if (id === routeRecordsId) {
         return resolvedRouteRecordsId
       }
@@ -85,6 +95,9 @@ export default (
       }
     },
     async load(id) {
+      if (id == RESOLVED_MODULE_PLUGIN_HOOK_ID) {
+        return `export const pluginHook = ${configuration.pluginHook.toString()};`
+      }
       if (id === resolvedRouteRecordsId) {
         const routes = await mapExamplesToRoutes(
           configuration.examplesRootPath,

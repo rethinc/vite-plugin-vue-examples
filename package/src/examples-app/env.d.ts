@@ -3,3 +3,9 @@ declare module 'virtual:vue-examples-route-records' {
 
   export const routeRecords: RouteRecordRaw[]
 }
+
+declare module 'virtual:plugin-hook' {
+  import { App } from 'vue'
+
+  export const pluginHook: (app: App<Element>) => void
+}
