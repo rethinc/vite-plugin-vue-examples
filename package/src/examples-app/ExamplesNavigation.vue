@@ -37,6 +37,7 @@ const onClickClose = () => {
 
 .examples-navigation {
   position: absolute;
+  z-index: 2147483647;
 
   .button {
     border: none;
